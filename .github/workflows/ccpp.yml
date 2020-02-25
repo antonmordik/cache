@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: build
-      run: mkdir build && cmake /home/runner/work/cache/cache/build
+      run: mkdir build && cd build && cmake /home/runner/work/cache/cache/build
