@@ -1,6 +1,9 @@
-#include <iostream>
+#include "src/utils/Log/Log.cpp"
+#include "src/services/Database/Database.cpp"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+  Log::console("Hello world");
+  Database database;
+  database.put();
+  return 0;
 }
