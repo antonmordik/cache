@@ -152,11 +152,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cache.cpp" />
+    <ClCompile Include="Cache.cpp" />
+    <ClCompile Include="Core.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="libs\sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cache.h" />
+    <ClInclude Include="Core.h" />
     <ClInclude Include="Database.h" />
   </ItemGroup>
   <ItemGroup>
