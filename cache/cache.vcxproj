@@ -157,11 +157,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="libs\sqlite3.c" />
+    <ClCompile Include="Memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cache.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="Memory.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
