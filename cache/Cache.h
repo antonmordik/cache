@@ -1,26 +1,23 @@
 #include "Memory.h"
 #pragma once
 
+struct CacheLine {
+  std::string data; // data of line
+  std::string memory_address; // location of data in memory
+  int count; // count of use
+};
+
 class Cache
 {
 public:
-	Cache();
+	Cache(Memory* memory);
 	~Cache();
-  std::string toString();
-
-  int push(std::string data); // adding line to cache
-  CacheLine pop(int index); // removing line from cache by index
-  CacheLine pop(std::string data); // removing line from cache by data
-  void clear(); // clearing cache method
-  void transferToMemory(CacheLine line, Memory* memory);
-
+  std::string insert(std::string data); // adding data to cache (if cache fulled - replaced less used line), returns tag of new line
+  std::string replace(std::string tag, std::string data); // replacing data on provided tag; returns old data
+  void clear(); // clearing all cache lines
 private:
-
-  int lineSize; // amount of bytes in line
   int linesCount; // amount of lines in cache
-  int setsCount; // amount of sets in cache
-  int slotsCount; // amount of slots in set
-  CacheLine *lines; // lines with data
-  int findLessUsedLine(); // returning index of less used line in cache
+  Memory* memory; // link to memory
+  std::map<std::string, CacheLine> lines; // lines with data
 };
 
