@@ -1,5 +1,4 @@
 #include "Cache.h"
-#include <filesystem>
 #include <iostream>
 
 // Common params
@@ -10,15 +9,16 @@ constexpr auto LINE_SIZE = 8;
 constexpr auto LINES_COUNT = 64;
 constexpr auto SLOTS_IN_SETS_COUNT = 4;
 
-Cache::Cache(Memory* memory) {
-  this->linesCount = LINES_COUNT;
-  for (int tag = 0; tag < LINES_COUNT; tag++) {
+Cache::Cache(Memory* memory, int linesCount = LINES_COUNT) {
+  this->linesCount = linesCount;
+  for (int tag = 0; tag < linesCount; tag++) {
     this->lines.insert(std::pair<std::string, CacheLine>(to_hex_string(tag), { "", "", 0 }));
   }
   this->memory = memory;
 }
 
 std::string Cache::insert(std::string data) {
+  // TODO: add write incrementer
   using namespace std;
   string memory_address = memory->insert(data);
   string inserted_tag = "";
@@ -51,10 +51,16 @@ std::string Cache::insert(std::string data) {
 }
 
 std::string Cache::replace(std::string tag, std::string data) {
+  // TODO: add write incrementer
   std::string old_data = this->lines.at(tag).data;
   this->lines.at(tag).data = data;
   this->lines.at(tag).count += 1;
   return old_data;
+}
+
+std::string Cache::read(std::string tag) {
+  // TODO: add hit or miss incrementer
+  return this->lines.at(tag).data;
 }
 
 void Cache::clear() {

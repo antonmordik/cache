@@ -10,12 +10,13 @@ struct CacheLine {
 class Cache
 {
 public:
-	Cache(Memory* memory);
+	Cache(Memory* memory, int linesCount);
 	~Cache();
   std::string insert(std::string data); // adding data to cache (if cache fulled - replaced less used line), returns tag of new line
   std::string replace(std::string tag, std::string data); // replacing data on provided tag; returns old data
+  std::string read(std::string tag);
   void clear(); // clearing all cache lines
-private:
+protected:
   int linesCount; // amount of lines in cache
   Memory* memory; // link to memory
   std::map<std::string, CacheLine> lines; // lines with data

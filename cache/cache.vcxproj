@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="Cache.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Database.cpp" />
@@ -161,6 +162,7 @@
     <ClCompile Include="hex.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Cache.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Memory.h" />

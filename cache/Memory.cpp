@@ -44,6 +44,10 @@ std::string Memory::replace(std::string address, std::string data) {
   return address;
 }
 
+std::string Memory::read(std::string address) {
+  return this->lines.at(address);
+}
+
 std::string Memory::clear(std::string address) {
   std::string old_data = this->lines.at(address);
   this->lines.at(address) = "";

@@ -1,4 +1,4 @@
-#include "Memory.h"
+#include "Cache.h"
 #pragma once
 
 struct SharedCacheLine {
@@ -7,17 +7,10 @@ struct SharedCacheLine {
   int count;
 };
 
-class SharedCache
-{
+class SharedCache : Cache {
 public:
 	SharedCache(Memory* memory);
 	~SharedCache();
-private:
-  Memory* memory;
-  // storage parameters
-  std::map<std::string, SharedCacheLine> lines; // list of lines in shared cache
-  int linesCount; // amount of lines in cache
-
-
+  // TODO: add differences from core cache
 };
 

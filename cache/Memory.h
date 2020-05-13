@@ -13,4 +13,5 @@ public:
   std::string insert(std::string data);
   std::string clear(std::string address);
   std::string replace(std::string address, std::string data);
+  std::string read(std::string address);
 };
