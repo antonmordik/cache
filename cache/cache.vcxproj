@@ -153,20 +153,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm.cpp" />
-    <ClCompile Include="Cache.cpp" />
+    <ClCompile Include="Caches.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="libs\sqlite3.c" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Memory.cpp" />
-    <ClCompile Include="SharedCache.cpp" />
-    <ClCompile Include="hex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
-    <ClInclude Include="Cache.h" />
+    <ClInclude Include="Caches.h" />
     <ClInclude Include="Database.h" />
+    <ClInclude Include="Matrix.h" />
     <ClInclude Include="Memory.h" />
-    <ClInclude Include="SharedCache.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -25,13 +25,13 @@ std::string to_hex_string(int num)
 
 Memory::Memory() {
   for (int address = 0; address < pow(16, 4); address++) {
-    this->lines.insert(std::pair<std::string, std::string>(to_hex_string(address), ""));
+    this->lines.insert(std::pair<std::string, int>(to_hex_string(address), -1));
   }
 };
 
-std::string Memory::insert(std::string data) {
+std::string Memory::insert(int data) {
   for (int address = 0; address < pow(16, 4); address++) {
-    if (this->lines.at(to_hex_string(address)) == "") {
+    if (this->lines.at(to_hex_string(address)) == -1) {
       this->lines.at(to_hex_string(address)) = data;
       return to_hex_string(address);
     }
@@ -39,18 +39,26 @@ std::string Memory::insert(std::string data) {
   return "";
 }
 
-std::string Memory::replace(std::string address, std::string data) {
+std::string Memory::replace(std::string address, int data) {
   this->lines.at(address) = data;
   return address;
 }
 
-std::string Memory::read(std::string address) {
+int Memory::read(std::string address) {
   return this->lines.at(address);
 }
 
-std::string Memory::clear(std::string address) {
-  std::string old_data = this->lines.at(address);
-  this->lines.at(address) = "";
+std::string Memory::to_string() {
+  std::string result = "";
+  for (int address = 0; address < pow(16, 2); address++) {
+    result += "[" + to_hex_string(address) + "] - " + std::to_string(this->lines.at(to_hex_string(address)))  + "\n";
+  }
+	return result;
+}
+
+int Memory::clear(std::string address) {
+  int old_data = this->lines.at(address);
+  this->lines.at(address) = -1;
   return old_data;
 }
 

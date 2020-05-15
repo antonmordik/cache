@@ -3,6 +3,6 @@ class Algorithm
 {
 public:
   static void blockedFloydWarshal();
-  static void traditionalFloydWarshal();
+  static void traditionalFloydWarshal(int** matrix, int numberOfVert);
 };
 

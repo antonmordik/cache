@@ -6,12 +6,13 @@ std::string to_hex_string(int num);
 
 class Memory {
 private:
-  std::map<std::string, std::string> lines;
+  std::map<std::string, int> lines;
 public:
   Memory();
   ~Memory();
-  std::string insert(std::string data);
-  std::string clear(std::string address);
-  std::string replace(std::string address, std::string data);
-  std::string read(std::string address);
+  std::string insert(int data);
+  int clear(std::string address);
+  std::string replace(std::string address, int data);
+  int read(std::string address);
+  std::string to_string();
 };
