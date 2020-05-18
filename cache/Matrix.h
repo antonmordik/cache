@@ -1,15 +1,20 @@
-#include "Memory.h"
+#include "System.h"
 #pragma once
 
 class Matrix {
 private:
   std::string** matrix;
-  Memory* memory;
+  System* system;
   unsigned int size;
 public:
-	Matrix(Memory* memory, unsigned int size);
+	Matrix(System* system, unsigned int size);
 	~Matrix();
-  std::string get(int i, int j); // getting element on [i][j] position
-  void set(int i, int j, std::string value); // setting value to [i][j] position
+  int get(unsigned int i, unsigned int j); // getting element on [i][j] position, source: Memory
+  int get(int core_id, unsigned int i, unsigned int j); // getting element on [i][j] position, source LocalCache -> SharedCache -> Memory
+  void set(unsigned int i, unsigned int j, int value); // setting value to [i][j] position, source: Memory
+  void set(int core_id, unsigned int i, unsigned int j, int value); // setting value to [i][j] position, source: LocalCache -> SharedCache -> Memory
+  unsigned int get_size();
+  unsigned int get_number_of_cores();
+  std::string to_string();
 };
 

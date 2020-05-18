@@ -2,7 +2,7 @@
 #include <map>
 #pragma once
 
-std::string to_hex_string(int num);
+std::string to_hex_string(unsigned int number);
 
 class Memory {
 private:

@@ -1,26 +1,26 @@
 #include "Memory.h"
 #include <math.h>
 
-std::string to_hex_string(int num)
+std::string to_hex_string(unsigned int number)
 {
   std::string B[16] = { "0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F" };
-  std::string answer = "";
+  std::string result_hex = "";
   int A[16] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
-  int num2;
+  int temp_number;
   int ssc[4];
   for (int i = 0; i < 4; i++) {
-    num2 = num / 16;
-    ssc[i] = num - (num2 * 16);
-    num = num2;
+    temp_number = number / 16;
+    ssc[i] = number - (temp_number * 16);
+    number = temp_number;
   }
   for (int j = 3; j >= 0; j--) {
     for (int k = 0; k < 16; k++) {
       if (ssc[j] == A[k]) {
-        answer += B[k];
+        result_hex += B[k];
       }
     }
   }
-  return answer;
+  return result_hex;
 }
 
 Memory::Memory() {
@@ -31,9 +31,10 @@ Memory::Memory() {
 
 std::string Memory::insert(int data) {
   for (int address = 0; address < pow(16, 4); address++) {
-    if (this->lines.at(to_hex_string(address)) == -1) {
-      this->lines.at(to_hex_string(address)) = data;
-      return to_hex_string(address);
+    std::string hex_address = to_hex_string(address);
+    if (this->lines.at(hex_address) == -1) {
+      this->lines.at(hex_address) = data;
+      return hex_address;
     }
   }
   return "";

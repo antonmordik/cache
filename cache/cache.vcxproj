@@ -159,6 +159,7 @@
     <ClCompile Include="libs\sqlite3.c" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Database.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="Memory.h" />
+    <ClInclude Include="System.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
