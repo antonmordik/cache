@@ -1,0 +1,31 @@
+{
+  "name": "cache-dashboard",
+  "version": "0.0.1",
+  "description": "Dashboard for viewing emulator results",
+  "main": "ui/index.js",
+  "scripts": {
+    "start": "node ./ui/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modriX/cache.git"
+  },
+  "private": true,
+  "keywords": [
+    "cache",
+    "hierarchy"
+  ],
+  "author": "Anton Mordik",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/modriX/cache/issues"
+  },
+  "homepage": "https://github.com/modriX/cache#readme",
+  "dependencies": {
+    "koa": "^2.12.0",
+    "koa-pug": "^4.0.3",
+    "opn": "^6.0.0",
+    "pug": "^2.0.4",
+    "sqlite3": "^4.2.0"
+  }
+}

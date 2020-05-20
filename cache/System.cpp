@@ -6,7 +6,7 @@ System::System(unsigned int number_of_cores) {
   this->memory = memory;
   this->shared_cache = new SharedCache(memory);
 
-  for (int i = 0; i < number_of_cores; i++) {
+  for (unsigned int i = 0; i < number_of_cores; i++) {
     this->caches.push_back(new LocalCache(memory, this->shared_cache, i));
   }
 }

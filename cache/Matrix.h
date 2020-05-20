@@ -1,10 +1,12 @@
 #include "System.h"
+#include "Logger.h"
 #pragma once
 
 class Matrix {
 private:
   std::string** matrix;
   System* system;
+  Logger* logger;
   unsigned int size;
 public:
 	Matrix(System* system, unsigned int size);
@@ -16,5 +18,8 @@ public:
   unsigned int get_size();
   unsigned int get_number_of_cores();
   std::string to_string();
+  std::string to_JSON();
+  Logger* get_logger();
+  System* get_system();
 };
 

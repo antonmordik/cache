@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    title=pageTitle
+    style(type="text/css").
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: 'Noto Sans', sans-serif;
+      }
+      #header {
+        font-size: 20px;
+        padding: 20px;
+        background: linear-gradient(45deg, #B2FF59, #00C853);
+        color: #222;
+      }
+      #body {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 300px 1fr;
+      }
+      #sessions, #dashboard {
+        padding: 25px;
+      }
+      #dashboard {
+        padding-left: 10px;
+      }
+      .list {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #B2FF59;
+        box-shadow: 0 10px 20px #B2FF5955;
+      }
+  body
+    #header Cache hierarchy dashboard
+    #body
+      #sessions
+        .list
+          .title Sessions
+      #dashboard
+        .list
+          .title Info

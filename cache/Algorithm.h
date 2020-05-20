@@ -4,7 +4,7 @@
 class Algorithm
 {
 public:
-  static void blocked_floyd_warshal(Matrix* matrix);
-  static void traditional_floyd_warshal(Matrix* matrix);
+  static void blocked_floyd_warshall(Matrix* matrix);
+  static void traditional_floyd_warshall(Matrix* matrix, int timeout_seconds);
 };
 

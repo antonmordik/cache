@@ -1,3 +1,5 @@
 Debug
 .vs
 /cache/storage.db
+node_modules
+*.log

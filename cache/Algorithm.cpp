@@ -32,16 +32,16 @@ std::vector<Indexes*> get_devided_indexes(Matrix* matrix) {
   return result;
 }
 
-void Algorithm::blocked_floyd_warshal(Matrix* matrix) {
+void Algorithm::blocked_floyd_warshall(Matrix* matrix) {
   // TODO: implement algorithm
 }
 
-void floyd_warshal_thread_callback(Matrix* matrix, int start_index, int end_index) {
+void floyd_warshall_thread_callback(int core_id, Matrix* matrix, int start_index, int end_index) {
   try {
     for (int k = start_index; k <= end_index; k++) {
       for (int i = 0; i < (int)matrix->get_size(); i++) {
         for (int j = 0; j < (int)matrix->get_size(); j++) {
-          matrix->set(i, j, std::min(matrix->get(i, j), matrix->get(i, k) + matrix->get(k, j)));
+          matrix->set(core_id, i, j, std::min(matrix->get(core_id, i, j), matrix->get(core_id, i, k) + matrix->get(core_id, k, j)));
         }
       }
     }
@@ -50,16 +50,16 @@ void floyd_warshal_thread_callback(Matrix* matrix, int start_index, int end_inde
   }
 }
 
-void Algorithm::traditional_floyd_warshal(Matrix* matrix) {
+void Algorithm::traditional_floyd_warshall(Matrix* matrix, int timeout_seconds) {
   std::vector<Indexes*> indexes = get_devided_indexes(matrix);
+  int core_id = 0;
   for (auto &pair: indexes) {
     int from = pair->from;
     int to = pair->to;
-    try {
-      auto result = std::thread(floyd_warshal_thread_callback, matrix, from, to);
-      result.join();
-    } catch (const std::exception& e) {
-      std::cout << e.what();
-    }
+    auto result = std::thread(floyd_warshall_thread_callback, core_id, matrix, from, to);
+    result.detach();
+    core_id++;
   }
+  // waiting to get right result in console output
+  std::this_thread::sleep_for(std::chrono::seconds(timeout_seconds));
 }
