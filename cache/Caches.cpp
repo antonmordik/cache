@@ -9,7 +9,10 @@ Cache::Cache(Memory* memory, int lines_count, int id = -1) {
   this->id = id;
   this->lines_count = lines_count;
   for (int tag = 0; tag < lines_count; tag++) {
-    this->lines.insert(std::pair<std::string, Line*>(to_hex_string(tag), (id == -1 ? new SharedCacheLine() : new Line())));
+    this->lines.insert(std::pair<std::string, Line*>(
+      to_hex_string(tag),
+      (id == -1 ? new SharedCacheLine() : new Line()))
+    );
   }
   this->memory = memory;
 }
