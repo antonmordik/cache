@@ -98,6 +98,10 @@ Cache::~Cache() {
 
 SharedCache::SharedCache(Memory* memory) : Cache(memory, 64 * 4) { }
 
-LocalCache::LocalCache(Memory* memory, SharedCache* shared_cache, int id): Cache(memory, 64, id) {
+LocalCache::LocalCache(
+  Memory* memory,
+  SharedCache* shared_cache,
+  int id
+  ): Cache(memory, 64, id) {
   this->shared_cache = shared_cache;
 }
