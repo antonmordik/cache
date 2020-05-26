@@ -70,7 +70,7 @@ int Cache::read(std::string tag) {
   return this->lines.at(tag)->data;
 }
 
-std::string Cache::get_tag(std::string address, bool shared_cache) {
+std::string Cache::get_tag(std::string address) {
   for (const auto& pair : this->lines) {
     if (pair.second->memory_address == address) {
       return pair.first;
