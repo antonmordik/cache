@@ -41,7 +41,15 @@ void floyd_warshall_thread_callback(int core_id, Matrix* matrix, int start_index
     for (int k = start_index; k <= end_index; k++) {
       for (int i = 0; i < (int)matrix->get_size(); i++) {
         for (int j = 0; j < (int)matrix->get_size(); j++) {
-          matrix->set(core_id, i, j, std::min(matrix->get(core_id, i, j), matrix->get(core_id, i, k) + matrix->get(core_id, k, j)));
+          matrix->set(
+            core_id,
+            i,
+            j,
+            std::min(
+              matrix->get(core_id, i, j),
+              matrix->get(core_id, i, k) + matrix->get(core_id, k, j)
+            )
+          );
         }
       }
     }
