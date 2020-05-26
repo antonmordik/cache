@@ -42,11 +42,9 @@ int Matrix::get(int core_id, unsigned int i, unsigned int j) {
   std::string tag = target_cache->get_tag(address, false);
   if (tag == "") {
     this->logger->incremet("Miss in " + std::to_string(core_id) + " cache");
-    tag = shared_cache->get_tag(address, true); // trying to find line in shared cache
-    // std::cout << "Tag in shared cache: '" << tag << "'\n";
+    tag = shared_cache->get_tag(address, true);
     if (tag == "") {
       this->logger->incremet("Miss in shared cache");
-      // shared cache miss happened => getting from memory
       return memory->read(address);
     }
     this->logger->incremet("Hit in shared cache");
