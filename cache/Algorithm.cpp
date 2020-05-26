@@ -62,12 +62,13 @@ void Algorithm::traditional_floyd_warshall(Matrix* matrix, int timeout_seconds) 
   std::vector<Indexes*> indexes = get_divided_indexes(matrix);
   int core_id = 0;
   for (auto &pair: indexes) {
-    int from = pair->from;
-    int to = pair->to;
-    auto result = std::thread(floyd_warshall_thread_callback, core_id, matrix, from, to);
+    int from = pair->from, to = pair->to;
+    auto result = std::thread(
+      floyd_warshall_thread_callback,
+      core_id, matrix, from, to
+    );
     result.detach();
     core_id++;
   }
-  // waiting to get right result in console output
   std::this_thread::sleep_for(std::chrono::seconds(timeout_seconds));
 }
