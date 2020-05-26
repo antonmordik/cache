@@ -36,15 +36,18 @@ void Algorithm::blocked_floyd_warshall(Matrix* matrix) {
   // TODO: implement algorithm
 }
 
-void floyd_warshall_thread_callback(int core_id, Matrix* matrix, int start_index, int end_index) {
+void floyd_warshall_thread_callback(
+  int core_id,
+  Matrix* matrix,
+  int start_index,
+  int end_index
+) {
   try {
     for (int k = start_index; k <= end_index; k++) {
       for (int i = 0; i < (int)matrix->get_size(); i++) {
         for (int j = 0; j < (int)matrix->get_size(); j++) {
           matrix->set(
-            core_id,
-            i,
-            j,
+            core_id, i, j,
             std::min(
               matrix->get(core_id, i, j),
               matrix->get(core_id, i, k) + matrix->get(core_id, k, j)
