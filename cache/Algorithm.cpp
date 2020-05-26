@@ -12,7 +12,7 @@ struct Indexes {
   };
 };
 
-std::vector<Indexes*> get_devided_indexes(Matrix* matrix) {
+std::vector<Indexes*> get_divided_indexes(Matrix* matrix) {
   std::vector<Indexes*> result;
   int matrix_size = matrix->get_size();
   int devide_count = matrix->get_number_of_cores();
@@ -51,7 +51,7 @@ void floyd_warshall_thread_callback(int core_id, Matrix* matrix, int start_index
 }
 
 void Algorithm::traditional_floyd_warshall(Matrix* matrix, int timeout_seconds) {
-  std::vector<Indexes*> indexes = get_devided_indexes(matrix);
+  std::vector<Indexes*> indexes = get_divided_indexes(matrix);
   int core_id = 0;
   for (auto &pair: indexes) {
     int from = pair->from;
